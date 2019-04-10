@@ -1,0 +1,3 @@
+/*
+  Access-Control-Allow-Methods: GET
+  Access-Control-Allow-Origin: http://sdk-test.percy.dev
