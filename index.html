@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SDK Test Website</title>
+    <style>
+      body {
+        font-size: 18px;
+        font-family: proxima-nova, Helvetica, sans-serif;
+        color: #69616b;
+        line-height: 1.3;
+        padding: 0px 20px;
+      }
+
+      h1 { color: #2a272b }
+      a { color: #9e66bf; }
+
+      code {
+        background: #eee;
+        padding: 3px;
+        border-radius: 3px;
+      }
+
+      .note {
+        background: #fff36c;
+        padding: 10px;
+        border-radius: 5px;
+      }
+    </style>
+    <!-- all content must come from the site's own origin (this excludes subdomains.) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+  </head>
+  <body>
+    <h1>SDK Test Website</h1>
+    <p class="note">
+      <strong>Note:</strong> If you can see this page snapshotted in Percy, the test passed.
+    </p>
+    <p>
+      This test website has two security features setup:
+    </p>
+    <ol>
+      <li>
+        <a href="#csp">
+          Content Security Policy (CSP)
+        </a>
+      </li>
+      <li>
+        <a href="#cors">
+          Cross-Origin Resource Sharing (CORS)
+        </a>
+      </li>
+
+    </ol>
+    <p>
+      These features make this website more difficult to snapshot
+      and so they act as a great test case for testing our SDKs.
+    </p>
+    <h2 id="csp">Content Security Policy (CSP)</h2>
+    <p>
+      Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain
+      types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are
+      used for everything from data theft to site defacement to distribution of malware.
+    </p>
+    <p>
+      Setting a CSP acts as a good test because when we try to snapshot this page, some SDKs will inject
+      <code>percy-agent.js</code> from <code>localhost</code>. <code>localhost</code> is not included in the CSP we
+      setup of <code>default-src 'self'</code> and therefore unless we've worked around this correctly,
+      the SDK will fail to snapshot this page.
+    </p>
+    <p>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">
+        &raquo; Documentation about Content Security Policy
+      </a>
+    </p>
+    <h2 id="cors">Cross-Origin Resource Sharing (CORS)</h2>
+    <p>
+      Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional HTTP headers to
+      tell a browser to let a web application running at one origin (domain) have permission 
+      to access selected resources from a server at a different origin.
+    </p>
+    <p>
+      This test website responds with the following CORS headers:
+    </p>
+    <pre>
+Access-Control-Allow-Methods: GET
+Access-Control-Allow-Origin: http://sdk-test.percy.dev
+    </pre>
+    <p>
+      This acts as a good test for our SDKs because some SDKs will inject <code>percy-agent.js</code> from <code>localhost</code>
+      and when snapshotting this page will initial a <code>POST</code> request to <code>localhost</code>, which is actively
+      being locked down by these headers.
+    </p>
+    <p>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">
+        &raquo; Documentation about Cross-Origin Resource Sharing
+      </a>
+    </p>
+  </body>
+</html>
