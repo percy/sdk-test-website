@@ -59,7 +59,7 @@
     </ol>
     <p>
       These features make this website more difficult to snapshot
-      and so they act as a great test case for testing our SDKs.
+      and it makes this website a particularly good case for testing our SDKs with.
     </p>
     <h2 id="csp">Content Security Policy (CSP)</h2>
     <p>
@@ -90,7 +90,6 @@
     <pre>
 Access-Control-Allow-Methods: GET
 Access-Control-Allow-Origin: http://sdk-test.percy.dev
-Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
     </pre>
     <p>
       This acts as a good test for our SDKs because some SDKs will inject <code>percy-agent.js</code> from <code>localhost</code>
@@ -107,6 +106,12 @@ Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
         The HTTP Strict-Transport-Security response header lets a web site tell
         browsers that it should only be accessed using HTTPS, instead of using HTTP.
     </p>
+    <p>
+        This test website responds with the following HSTS headers:
+      </p>
+      <pre>
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+      </pre>
     <p>
       <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">
         &raquo; Documentation about HTTP Strict Transport Security
