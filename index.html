@@ -51,7 +51,11 @@
           Cross-Origin Resource Sharing (CORS)
         </a>
       </li>
-
+      <li>
+        <a href="#hsts">
+          HTTP Strict Transport Security (HSTS)
+        </a>
+      </li>
     </ol>
     <p>
       These features make this website more difficult to snapshot
@@ -86,6 +90,7 @@
     <pre>
 Access-Control-Allow-Methods: GET
 Access-Control-Allow-Origin: http://sdk-test.percy.dev
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
     </pre>
     <p>
       This acts as a good test for our SDKs because some SDKs will inject <code>percy-agent.js</code> from <code>localhost</code>

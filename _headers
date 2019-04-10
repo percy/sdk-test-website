@@ -1,3 +1,4 @@
 /*
   Access-Control-Allow-Methods: GET
   Access-Control-Allow-Origin: http://sdk-test.percy.dev
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
