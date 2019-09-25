@@ -1,5 +1,11 @@
 /redirects/resources/styles.css   /redirects/resources/redirected-styles.css
 /redirects/resources/cat.jpg   /redirects/resources/redirected-cat.jpg
 
+# This JS is what modifies the DOM for our `@percy/agent` test
+/redirects/resources/script.js   /redirects/resources/redirected-script.js
+
+# always should 404, for testing purposes
+/redirects/resources/cat.jpg   /redirects/resources/redirected-cat-404.jpg
+
 /redirects/resources/fonts/Montserrat-Regular.woff   /redirects/resources/fonts/redirected-Montserrat-Regular.woff
 /redirects/resources/fonts/Montserrat-Regular.woff2   /redirects/resources/fonts/redirected-Montserrat-Regular.woff2
